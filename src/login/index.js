@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import axios from 'axios';
 
-import {Alert, StyleSheet, View} from 'react-native';
+import { Alert, StyleSheet, View } from 'react-native';
 
-import {Text, Input, Button} from 'react-native-elements';
+import { Text, Input, Button } from 'react-native-elements';
 
-const Login = ({navigation}) => {
+const Login = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -18,7 +18,7 @@ const Login = ({navigation}) => {
     } else {
       setLoading(true);
       const {
-        data: {response},
+        data: { response },
       } = await axios.get(
         `https://moveit.ellixar.com/api/driver_login?email=${username}&password=${password}`,
       );
@@ -39,13 +39,13 @@ const Login = ({navigation}) => {
       <Text h1>Driver Login</Text>
       <Input
         placeholder="Username"
-        leftIcon={{type: 'ionicon', name: 'person-outline'}}
+        leftIcon={{ type: 'ionicon', name: 'person-outline' }}
         value={username}
         onChangeText={setUsername}
       />
       <Input
         placeholder="Password"
-        leftIcon={{type: 'ionicon', name: 'lock-closed-outline'}}
+        leftIcon={{ type: 'ionicon', name: 'lock-closed-outline' }}
         value={password}
         onChangeText={setPassword}
         secureTextEntry={true}

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
-const Details = ({route}) => {
+const Details = ({ route }) => {
   return (
     <View style={styles.container}>
       <Text>Home Screen: {route.params.user_data.id}</Text>

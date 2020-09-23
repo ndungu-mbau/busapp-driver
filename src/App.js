@@ -8,17 +8,17 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 
-import {StatusBar} from 'react-native';
+import { StatusBar } from 'react-native';
 
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import {ThemeProvider, Header, colors} from 'react-native-elements';
+import { ThemeProvider, Header, colors } from 'react-native-elements';
 
 import login from './login';
 import details from './details';
 
-const {Navigator, Screen} = createStackNavigator();
+const { Navigator, Screen } = createStackNavigator();
 
 const App = () => {
   return (
@@ -29,15 +29,15 @@ const App = () => {
           <Screen
             name="login"
             component={login}
-            options={{headerShown: false}}
+            options={{ headerShown: false }}
           />
           <Screen
             name="details"
             component={details}
             options={{
               title: 'Passenger Details',
-              header: ({scene, previous, navigation}) => {
-                const {options} = scene.descriptor;
+              header: ({ scene, previous, navigation }) => {
+                const { options } = scene.descriptor;
                 const title =
                   options.headerTitle !== undefined
                     ? options.headerTitle
@@ -58,7 +58,7 @@ const App = () => {
                       color: '#fff',
                       onPress: navigation.goBack,
                     }}
-                    centerComponent={{text: title, style: {color: '#fff'}}}
+                    centerComponent={{ text: title, style: { color: '#fff' } }}
                     style={options.headerStyle}
                   />
                 );
