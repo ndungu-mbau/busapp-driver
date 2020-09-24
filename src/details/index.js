@@ -4,7 +4,9 @@ import axios from 'axios';
 
 import { View, Text, StyleSheet, Alert } from 'react-native';
 
-import { Card } from 'react-native-elements';
+import { Card, Button } from 'react-native-elements';
+
+import call from 'react-native-phone-call';
 
 const Details = ({ route }) => {
   const [users, setUsers] = useState([]);
@@ -48,6 +50,26 @@ const Details = ({ route }) => {
                   <Text>Total Seats: {passenger.total_seat}</Text>
                   <Text>Seats: {passenger.seat_numbers}</Text>
                   <Text>Drop Location: {passenger.drop_trip_location}</Text>
+                  <Card.Divider />
+                  <Button
+                    raised
+                    icon={{
+                      type: 'ionicon',
+                      name: 'call-outline',
+                      color: 'white',
+                    }}
+                    onPress={async () => {
+                      try {
+                        await call({
+                          number: passenger.phone,
+                          prompt: true,
+                        });
+                      } catch (e) {
+                        console.error(e);
+                      }
+                    }}
+                    title="Call"
+                  />
                 </Card>
               );
             })}
