@@ -1,4 +1,4 @@
-package com.driverapp;
+package com.moveit.driverapp;
 
 import com.facebook.react.ReactActivity;
 

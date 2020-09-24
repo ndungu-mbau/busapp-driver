@@ -1,4 +1,4 @@
-package com.driverapp;
+package com.moveit.driverapp;
 
 import android.app.Application;
 import android.content.Context;
