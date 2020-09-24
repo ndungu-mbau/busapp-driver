@@ -6,6 +6,8 @@ import { Alert, StyleSheet, View } from 'react-native';
 
 import { Text, Input, Button } from 'react-native-elements';
 
+import { BASE_URL } from '../constants';
+
 const Login = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -20,7 +22,7 @@ const Login = ({ navigation }) => {
       const {
         data: { response },
       } = await axios.get(
-        `https://moveit.ellixar.com/api/driver_login?email=${username}&password=${password}`,
+        `${BASE_URL}/api/driver_login?email=${username}&password=${password}`,
       );
       setLoading(false);
 

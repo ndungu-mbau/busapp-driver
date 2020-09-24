@@ -8,12 +8,12 @@ import { Card, Button } from 'react-native-elements';
 
 import call from 'react-native-phone-call';
 
+import { BASE_URL } from '../constants';
+
 const Details = ({ route }) => {
   const [users, setUsers] = useState([]);
   axios
-    .get(
-      `https://moveit.ellixar.com/api/get_passenger_on_trip/${route.params.user_data.trip}`,
-    )
+    .get(`${BASE_URL}/api/get_passenger_on_trip/${route.params.user_data.trip}`)
     .then(({ data }) => {
       return data.response;
     })
