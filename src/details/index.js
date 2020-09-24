@@ -1,11 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { View, Text, StyleSheet } from 'react-native';
+import axios from 'axios';
+
+import { View, Text, StyleSheet, Alert } from 'react-native';
+
+import { Card } from 'react-native-elements';
 
 const Details = ({ route }) => {
+  const [users, setUsers] = useState([]);
+  axios
+    .get(
+      `https://moveit.ellixar.com/api/get_passenger_on_trip/${route.params.user_data.trip}`,
+    )
+    .then(({ data }) => {
+      return data.response;
+    })
+    .then((res) => {
+      if (res.status === 'ok') {
+        const passengers = res.passengers.reduce((acc, user) => {
+          if (acc[user.pickup_trip_location]) {
+            acc[user.pickup_trip_location].push(user);
+          } else {
+            acc[user.pickup_trip_location] = [user];
+          }
+          return acc;
+        }, {});
+        // console.log(passengers);
+        setUsers(passengers);
+      } else {
+        Alert.alert(res.status, 'No passengers on this trip.');
+      }
+    });
+
   return (
     <View style={styles.container}>
-      <Text>Home Screen: {route.params.user_data.id}</Text>
+      {Object.entries(users).map(([location, passengers]) => {
+        return (
+          <Card>
+            <Card.Title>{location}</Card.Title>
+            <Card.Divider />
+            {passengers.map((passenger) => {
+              return (
+                <Card>
+                  <Card.Title>{`${passenger.firstname} ${passenger.lastname}`}</Card.Title>
+                  <Text>Phone: {passenger.phone}</Text>
+                  <Text>Ticket No: {passenger.tkt_passenger_id_no}</Text>
+                  <Text>Total Seats: {passenger.total_seat}</Text>
+                  <Text>Seats: {passenger.seat_numbers}</Text>
+                  <Text>Drop Location: {passenger.drop_trip_location}</Text>
+                </Card>
+              );
+            })}
+          </Card>
+        );
+      })}
     </View>
   );
 };
@@ -15,7 +63,5 @@ export default Details;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
