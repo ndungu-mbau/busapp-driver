@@ -52,12 +52,7 @@ const Login = ({ navigation }) => {
         onChangeText={setPassword}
         secureTextEntry={true}
       />
-      <Button
-        title="LOGIN"
-        type="outline"
-        loading={loading}
-        onPress={onPress}
-      />
+      <Button title="LOGIN" loading={loading} onPress={onPress} />
     </View>
   );
 };

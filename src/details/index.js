@@ -38,12 +38,12 @@ const Details = ({ route }) => {
     <View style={styles.container}>
       {Object.entries(users).map(([location, passengers]) => {
         return (
-          <Card>
+          <Card key={location}>
             <Card.Title>{location}</Card.Title>
             <Card.Divider />
             {passengers.map((passenger) => {
               return (
-                <Card>
+                <Card key={passenger.phone}>
                   <Card.Title>{`${passenger.firstname} ${passenger.lastname}`}</Card.Title>
                   <Text>Phone: {passenger.phone}</Text>
                   <Text>Ticket No: {passenger.tkt_passenger_id_no}</Text>

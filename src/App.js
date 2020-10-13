@@ -13,23 +13,32 @@ import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { ThemeProvider, Header, colors } from 'react-native-elements';
+import { ThemeProvider, Header } from 'react-native-elements';
 
 import login from './login';
 import details from './details';
 
 const { Navigator, Screen } = createStackNavigator();
 
+const theme = {
+  colors: {
+    primary: '#030457',
+    secondary: '#AF08DC',
+  },
+};
+
 const App = () => {
   return (
     <NavigationContainer>
-      <ThemeProvider>
+      <ThemeProvider theme={theme}>
         <StatusBar barStyle="light-content" />
         <Navigator>
           <Screen
             name="login"
             component={login}
-            options={{ headerShown: false }}
+            options={{
+              headerShown: false,
+            }}
           />
           <Screen
             name="details"
@@ -49,8 +58,7 @@ const App = () => {
                   <Header
                     placement="left"
                     statusBarProps={{
-                      backgroundColor:
-                        options.headerStyle?.backgroundColor || colors.primary,
+                      backgroundColor: '#030457',
                     }}
                     leftComponent={{
                       icon: 'chevron-back-outline',
