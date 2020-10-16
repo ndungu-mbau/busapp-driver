@@ -1,4 +1,4 @@
-package com.moveit.driverapp;
+package com.liquidcoach.driverapp;
 
 import android.app.Application;
 import android.content.Context;

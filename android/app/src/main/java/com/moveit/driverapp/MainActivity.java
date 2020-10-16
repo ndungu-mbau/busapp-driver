@@ -1,4 +1,4 @@
-package com.moveit.driverapp;
+package com.liquidcoach.driverapp;
 
 import com.facebook.react.ReactActivity;
 

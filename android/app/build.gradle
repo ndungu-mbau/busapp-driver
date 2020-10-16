@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.moveit.driverapp"
+        applicationId "com.liquidcoach.driverapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
